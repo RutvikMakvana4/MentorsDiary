@@ -92,8 +92,11 @@ export const login = asyncHandler(
           message: "Authentication failed",
         });
       }
-    } catch (error) {
-      res.send({ status: 0, message: "Error" });
+    } catch (error : any) {
+      res.send({
+         status: 0, 
+         message: "Error" + error.message,
+         });
     }
   }
 );
@@ -160,13 +163,13 @@ export const forgotPassword = asyncHandler(
 
 export const verifyOTP = asyncHandler(async (req: Request, res: Response) => {
   try {
-    const otp1 = req.body.otp;
+    const otp = req.body.otp;
 
     await User.findOne({
       attributes: ["otp"],
     });
 
-    if (otp1 === otp) {
+    if (otp === otp) {
       res.json({
         status: 1,
         success: true,

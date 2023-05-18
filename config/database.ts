@@ -1,7 +1,7 @@
 import { Sequelize } from "sequelize";
 
 const sequelize = new Sequelize(
-  "postgres://postgres:Rutvik432@localhost:5432/Demo",
+  "postgres://postgres:root@localhost:5432/MentorsDiary",
   {
     logging: false,
   }
